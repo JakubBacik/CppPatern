@@ -9,10 +9,10 @@ class Point{
 public:
     friend std::ostream &operator<<(std::ostream &os, const Point &point)
     {
-        os << "x: " << point._x << "y :" << point._y; 
+        os << "x: " << point._x << " y :" << point._y; 
         return os;
     }
-    static PointFactory Factory;
+    
 private:
     class PointFactory
     {
@@ -28,11 +28,13 @@ private:
             return {r*cos(theta), r*sin(theta)};
         }
     };
+public:    
+    static PointFactory Factory;
 };
 
 int main()
 {
-    auto p = Point::PointFactory.NewCartesian(5, 6);
+    auto p = Point::Factory.NewCartesian(4,5);
     std::cout << p << std::endl;
 
     return 0;
